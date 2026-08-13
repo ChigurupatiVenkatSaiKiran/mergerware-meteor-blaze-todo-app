@@ -37,7 +37,7 @@
 
   <!-- Header -->
   <text x="30" y="45" font-family="'Outfit', 'Inter', sans-serif" font-size="22" font-weight="bold" fill="#ffffff" letter-spacing="0.5">
-    TaskFlow Compilation &amp; Execution Pipeline
+    Mergerware Compilation &amp; Execution Pipeline
   </text>
   <text x="30" y="65" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">
     Rspack hot-reloading asset pipeline to client-server DDP synchronization

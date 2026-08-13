@@ -60,7 +60,7 @@
 
   <!-- Header -->
   <text x="30" y="45" font-family="'Outfit', 'Inter', system-ui, sans-serif" font-size="22" font-weight="bold" fill="#ffffff" letter-spacing="0.5">
-    TaskFlow System Architecture
+    Mergerware System Architecture
   </text>
   <text x="30" y="65" font-family="'Inter', system-ui, sans-serif" font-size="12" fill="#94a3b8" font-weight="500">
     Meteor 3.x Real-Time DDP Publication &amp; Async Database Engine

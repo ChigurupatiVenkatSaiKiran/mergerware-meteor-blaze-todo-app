@@ -1,10 +1,10 @@
-# <div align="center">⚡ TaskFlow</div>
+# <div align="center">⚡ Mergerware Meteor Blaze Todo App</div>
 
 <div align="center">
 
 **A Premium, State-of-the-Art Task Management System built with Meteor 3.x, Blaze & Rspack.**
 
-*TaskFlow goes far beyond a typical to-do application, presenting an ultra-modern glassmorphic interface, real-time reactive counts, fully-persistent drag-and-drop reordering, inline text editing, and complete mobile responsiveness.*
+*This application goes far beyond a typical to-do application, presenting an ultra-modern glassmorphic interface, real-time reactive counts, fully-persistent drag-and-drop reordering, inline text editing, and complete mobile responsiveness.*
 
 ---
 
@@ -76,7 +76,7 @@ With Rspack as the core compiler, code modifications (CSS, templates, and server
 
 ## 🚀 Meteor 3.x Migration Guide (Sync-to-Async)
 
-TaskFlow is developed from the ground up to be compliant with **Meteor 3.x**. In Meteor 3, synchronous MongoDB operations are deprecated on the server. Below is a summary of how TaskFlow implements these upgrades:
+This project is developed from the ground up to be compliant with **Meteor 3.x**. In Meteor 3, synchronous MongoDB operations are deprecated on the server. Below is a summary of how this project implements these upgrades:
 
 | Feature / Operation | Legacy Meteor 2.x (Sync) | Modern Meteor 3.x (Async) |
 | :--- | :--- | :--- |
