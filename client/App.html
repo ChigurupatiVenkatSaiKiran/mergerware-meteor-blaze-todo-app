@@ -1,0 +1,147 @@
+<template name="App">
+  <div class="app-layout">
+
+    <!-- ══════════════ SIDEBAR ══════════════ -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-name">TaskFlow</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <p class="nav-label">Categories</p>
+
+        <!-- All Tasks Filter -->
+        <button
+          id="filter-all"
+          class="nav-item {{#if isActiveCategory 'all'}}active{{/if}}"
+          data-category="all"
+        >
+          <span class="nav-icon">🗂️</span>
+          <span class="nav-text">All Tasks</span>
+          <span class="nav-badge">{{totalCount}}</span>
+        </button>
+
+        <!-- Per-category filters -->
+        {{#each categories}}
+          <button
+            id="filter-{{key}}"
+            class="nav-item cat-{{key}} {{#if ../isActiveCategory key}}active{{/if}}"
+            data-category="{{key}}"
+          >
+            <span class="nav-icon">{{icon}}</span>
+            <span class="nav-text">{{label}}</span>
+            <span class="nav-badge">{{count}}</span>
+          </button>
+        {{/each}}
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="progress-ring-wrap">
+          <svg class="progress-ring" viewBox="0 0 60 60">
+            <circle class="progress-ring-bg" cx="30" cy="30" r="26"/>
+            <circle
+              class="progress-ring-fill"
+              cx="30" cy="30" r="26"
+              stroke-dasharray="{{progressDash}}"
+            />
+          </svg>
+          <span class="progress-label">{{completionPct}}%</span>
+        </div>
+        <div class="progress-text">
+          <strong>{{completedCount}}</strong> of <strong>{{totalCount}}</strong> done
+        </div>
+      </div>
+    </aside>
+
+    <!-- ══════════════ MAIN CONTENT ══════════════ -->
+    <main class="main-content">
+
+      <!-- Header -->
+      <header class="main-header">
+        <div class="header-left">
+          <h1 class="main-title">
+            {{#if isActiveCategory 'all'}}
+              All Tasks
+            {{else}}
+              {{activeCategoryLabel}} Tasks
+            {{/if}}
+          </h1>
+          <p class="main-subtitle">
+            {{incompleteCount}} task{{#if incompleteCountPlural}}s{{/if}} remaining
+          </p>
+        </div>
+        <div class="header-actions">
+          <label class="toggle-completed-label">
+            <input
+              id="toggle-hide-completed"
+              type="checkbox"
+              class="toggle-checkbox"
+              checked={{hideCompleted}}
+            >
+            <span class="toggle-track">
+              <span class="toggle-thumb"></span>
+            </span>
+            <span class="toggle-text">Hide done</span>
+          </label>
+        </div>
+      </header>
+
+      <!-- Add Task Form -->
+      <form class="add-task-form" id="add-task-form">
+        <div class="form-inner">
+          <div class="form-input-wrap">
+            <span class="form-input-icon">✏️</span>
+            <input
+              id="task-text-input"
+              class="task-input"
+              type="text"
+              placeholder="What needs to be done?"
+              autocomplete="off"
+            >
+          </div>
+          <div class="form-select-wrap">
+            <select id="task-category-select" class="category-select">
+              <option value="Work">💼 Work</option>
+              <option value="Personal">🏠 Personal</option>
+              <option value="Urgent">🔥 Urgent</option>
+              <option value="Other">📌 Other</option>
+            </select>
+          </div>
+          <button id="add-task-btn" type="submit" class="add-btn">
+            <span>+</span> Add
+          </button>
+        </div>
+      </form>
+
+      <!-- Task List -->
+      {{#if isLoading}}
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>Loading your tasks…</p>
+        </div>
+      {{else}}
+        {{#if hasTasks}}
+          <ul class="task-list" id="task-list">
+            {{#each tasks}}
+              {{> Task}}
+            {{/each}}
+          </ul>
+        {{else}}
+          <div class="empty-state">
+            <div class="empty-icon">🎉</div>
+            <h2 class="empty-title">
+              {{#if isActiveCategory 'all'}}
+                No tasks yet
+              {{else}}
+                No {{activeCategoryLabel}} tasks
+              {{/if}}
+            </h2>
+            <p class="empty-desc">Add your first task above to get started!</p>
+          </div>
+        {{/if}}
+      {{/if}}
+
+    </main>
+  </div>
+</template>

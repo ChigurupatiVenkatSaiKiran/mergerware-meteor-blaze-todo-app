@@ -1,0 +1,53 @@
+<template name="Task">
+  <li
+    class="task-item {{#if checked}}task-checked{{/if}} cat-{{category}}"
+    data-id="{{_id}}"
+  >
+    <!-- Drag Handle -->
+    <span class="drag-handle" title="Drag to reorder">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="5" cy="4" r="1.5" fill="currentColor"/>
+        <circle cx="11" cy="4" r="1.5" fill="currentColor"/>
+        <circle cx="5" cy="8" r="1.5" fill="currentColor"/>
+        <circle cx="11" cy="8" r="1.5" fill="currentColor"/>
+        <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+        <circle cx="11" cy="12" r="1.5" fill="currentColor"/>
+      </svg>
+    </span>
+
+    <!-- Custom Checkbox -->
+    <label class="task-checkbox-wrap">
+      <input
+        type="checkbox"
+        class="task-checkbox"
+        data-id="{{_id}}"
+        checked={{checked}}
+      >
+      <span class="task-checkbox-custom"></span>
+    </label>
+
+    <!-- Task Text (editable on double-click) -->
+    <span
+      class="task-text {{#if checked}}task-text-done{{/if}}"
+      title="Double-click to edit"
+      data-id="{{_id}}"
+    >{{text}}</span>
+
+    <!-- Category Badge -->
+    <span class="category-badge cat-badge-{{category}}">
+      {{categoryIcon}} {{category}}
+    </span>
+
+    <!-- Delete Button -->
+    <button
+      class="delete-btn"
+      data-id="{{_id}}"
+      title="Delete task"
+      aria-label="Delete task"
+    >
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M2 2L12 12M12 2L2 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </li>
+</template>
