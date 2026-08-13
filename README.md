@@ -61,37 +61,18 @@ A dual-panel layout containing a dynamic left sidebar for completion statistics,
 *   **SVG Gauge**: An animated circular SVG progress widget in the sidebar footer showing your real-time task completion percentage.
 
 ---
+## 🏗️ Technical Architecture & Pipeline
 
-## 🏗️ Technical Architecture & Specs
+### 🌐 System Architecture
+The application runs on a reactive distributed state model. Client UI interactions trigger optimistic UI updates in the local `Minimongo` database, while non-blocking asynchronous WebSocket DDP messages sync the state to the server and the primary MongoDB instance.
 
-```
-   ┌──────────────────────────────────────────────┐
-   │            Client (Blaze View Engine)        │
-   │   - App.html (Sidebar, Categories, Filters)  │
-   │   - Task.html (Item layout, Drag Handles)    │
-   └────────┬──────────────────────────────▲──────┘
-            │                              │
-            │ callAsync (Methods)          │ DDP WebSocket (Pub/Sub)
-            ▼                              │
-   ┌───────────────────────────────────────┴──────┐
-   │                 Meteor Server                │
-   │   - main.js (Startup & Publications)         │
-   │   - methods.js (Async DB Operations)          │
-   └────────┬──────────────────────────────▲──────┘
-            │                              │
-            ▼ Write                        │ Read
-   ┌───────────────────────────────────────┴──────┐
-   │                   MongoDB                    │
-   │   - Collection: tasks                        │
-   │   - Fields: text, checked, category, order   │
-   └──────────────────────────────────────────────┘
-```
+![System Architecture](client/assets/architecture.svg)
 
-*   **Pub/Sub Model**: Server publishes `tasks` ordered by the `order` parameter, allowing the client to automatically receive reactive updates.
-*   **Bundling Engine**: Rspack acts as the builder, achieving compilation times of under 200ms during client changes.
-*   **Design Paradigm**: Minimal, glassmorphic layout using modern CSS variables, `backdrop-filter: blur`, and transitions on interactive elements.
+### ⚙️ Compilation & Asset Pipeline
+With Rspack as the core compiler, code modifications (CSS, templates, and server methods) undergo HMR (Hot Module Replacement) and compilation in less than 200ms.
 
----
+![Execution Pipeline](client/assets/pipeline.svg)
+
 
 ## 🚀 Meteor 3.x Migration Guide (Sync-to-Async)
 

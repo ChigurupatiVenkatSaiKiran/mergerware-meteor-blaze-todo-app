@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 320" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Node Gradient -->
+    <linearGradient id="node-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Active Line Gradient -->
+    <linearGradient id="flow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="4" flood-color="#000000" flood-opacity="0.3" />
+    </filter>
+
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="850" height="320" rx="16" fill="url(#bg-grad)" />
+  <rect width="850" height="320" rx="16" fill="url(#grid)" />
+
+  <!-- Outer Border Glow -->
+  <rect x="1" y="1" width="848" height="318" rx="15" fill="none" stroke="#6366f1" stroke-width="1.5" stroke-opacity="0.25" />
+
+  <!-- Header -->
+  <text x="30" y="45" font-family="'Outfit', 'Inter', sans-serif" font-size="22" font-weight="bold" fill="#ffffff" letter-spacing="0.5">
+    TaskFlow Compilation &amp; Execution Pipeline
+  </text>
+  <text x="30" y="65" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">
+    Rspack hot-reloading asset pipeline to client-server DDP synchronization
+  </text>
+
+  <!-- Connection Line Flow -->
+  <path d="M 120,175 L 720,175" fill="none" stroke="url(#flow-grad)" stroke-width="3" />
+  
+  <!-- Flow Arrows -->
+  <polygon points="260,170 270,175 260,180" fill="#a855f7" />
+  <polygon points="460,170 470,175 460,180" fill="#a855f7" />
+  <polygon points="660,170 670,175 660,180" fill="#10b981" />
+
+  <!-- ==================== STAGE 1: DEV SOURCE ==================== -->
+  <g transform="translate(40, 110)" filter="url(#shadow)">
+    <rect width="150" height="130" rx="10" fill="url(#node-grad)" stroke="#334155" stroke-width="1.5" />
+    <rect width="150" height="6" rx="3" fill="#6366f1" />
+    <text x="75" y="30" font-family="'Outfit', 'Inter', sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">
+      1. Source Files
+    </text>
+    <text x="75" y="60" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Blaze HTML Templates</text>
+    <text x="75" y="78" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Reactive JS Controllers</text>
+    <text x="75" y="96" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">HSL CSS Tokens</text>
+  </g>
+
+  <!-- ==================== STAGE 2: RSPACK BUNDLER ==================== -->
+  <g transform="translate(240, 110)" filter="url(#shadow)">
+    <rect width="150" height="130" rx="10" fill="url(#node-grad)" stroke="#4f46e5" stroke-width="1.5" />
+    <rect width="150" height="6" rx="3" fill="#a855f7" />
+    <text x="75" y="30" font-family="'Outfit', 'Inter', sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">
+      2. Rspack Core
+    </text>
+    <text x="75" y="60" font-family="'Inter', sans-serif" font-size="10" fill="#c084fc" text-anchor="middle" font-weight="bold">SWC Compiler</text>
+    <text x="75" y="78" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Fast CSS Bundling</text>
+    <text x="75" y="96" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Template Injections</text>
+    <!-- Badge -->
+    <rect x="45" y="106" width="60" height="16" rx="8" fill="#1e1b4b" stroke="#6b21a8" stroke-width="1" />
+    <text x="75" y="117" font-family="'Inter', sans-serif" font-size="8" font-weight="bold" fill="#c084fc" text-anchor="middle">&lt; 200ms HMR</text>
+  </g>
+
+  <!-- ==================== STAGE 3: METEOR RUNTIME ==================== -->
+  <g transform="translate(440, 110)" filter="url(#shadow)">
+    <rect width="150" height="130" rx="10" fill="url(#node-grad)" stroke="#9333ea" stroke-width="1.5" />
+    <rect width="150" height="6" rx="3" fill="#d946ef" />
+    <text x="75" y="30" font-family="'Outfit', 'Inter', sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">
+      3. Meteor 3.x
+    </text>
+    <text x="75" y="60" font-family="'Inter', sans-serif" font-size="10" fill="#e879f9" text-anchor="middle" font-weight="bold">Async Runtime</text>
+    <text x="75" y="78" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Async Methods Registry</text>
+    <text x="75" y="96" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Server Publications</text>
+  </g>
+
+  <!-- ==================== STAGE 4: CLIENT SYNC ==================== -->
+  <g transform="translate(640, 110)" filter="url(#shadow)">
+    <rect width="150" height="130" rx="10" fill="url(#node-grad)" stroke="#10b981" stroke-width="1.5" />
+    <rect width="150" height="6" rx="3" fill="#10b981" />
+    <text x="75" y="30" font-family="'Outfit', 'Inter', sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">
+      4. Client Mount
+    </text>
+    <text x="75" y="60" font-family="'Inter', sans-serif" font-size="10" fill="#34d399" text-anchor="middle" font-weight="bold">DDP Live Sync</text>
+    <text x="75" y="78" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Glassmorphic Render</text>
+    <text x="75" y="96" font-family="'Inter', sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">Reactive Updates</text>
+  </g>
+</svg>
