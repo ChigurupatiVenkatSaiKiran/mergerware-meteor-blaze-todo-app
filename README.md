@@ -17,7 +17,7 @@
   <img src="https://img.shields.io/badge/HMR-%3C200ms-success?style=flat-square"/>
   <img src="https://img.shields.io/badge/Categories-4_Color_Coded-orange?style=flat-square"/>
   <img src="https://img.shields.io/badge/DDP-Real_Time_Sync-blueviolet?style=flat-square"/>
-  <a href="https://chigurupativenkatsai.github.io/mergerware-meteor-blaze-todo-app/"><img src="https://img.shields.io/badge/Live_Demo-GitHub_Pages_⚡-22C55E?style=flat-square&logo=github&logoColor=white"/></a>
+  <a href="https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/"><img src="https://img.shields.io/badge/Live_Demo-GitHub_Pages_⚡-22C55E?style=flat-square&logo=github&logoColor=white"/></a>
 </p>
 
 <br/>
@@ -26,7 +26,7 @@
 
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo_URL-Open_Application-6366F1?style=for-the-badge&logo=rocket)](https://chigurupativenkatsai.github.io/mergerware-meteor-blaze-todo-app/)
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo_URL-Open_Application-6366F1?style=for-the-badge&logo=rocket)](https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/)
 
 </div>
 
