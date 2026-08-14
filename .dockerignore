@@ -1,0 +1,7 @@
+# Docker ignore
+.git
+.meteor/local
+node_modules
+_build
+.rsdoctor
+*.log
