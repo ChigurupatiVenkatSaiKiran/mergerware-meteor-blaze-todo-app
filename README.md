@@ -64,15 +64,48 @@ Modern glassmorphism with backdrop-filter blur, CSS custom properties & transiti
 
 | # | Section |
 |---|---------|
-| 1 | [🏗️ System Architecture](#%EF%B8%8F-system-architecture) |
-| 2 | [⚙️ Build & Compilation Pipeline](#%EF%B8%8F-build--compilation-pipeline) |
-| 3 | [🌟 Feature Deep-Dive](#-feature-deep-dive) |
-| 4 | [🚀 Meteor 3.x Async Migration](#-meteor-3x-async-migration) |
-| 5 | [🔌 Core Implementation](#-core-implementation) |
-| 6 | [📂 Project Structure](#-project-structure) |
-| 7 | [🧰 Tech Stack](#-tech-stack) |
-| 8 | [🖥️ Quick Start](#%EF%B8%8F-quick-start) |
-| 9 | [🛡️ Engineering Quality](#%EF%B8%8F-engineering-quality) |
+| 1 | [💡 Project Explanation & Motivation](#-project-explanation--motivation) |
+| 2 | [🏗️ System Architecture](#%EF%B8%8F-system-architecture) |
+| 3 | [⚙️ Build & Compilation Pipeline](#%EF%B8%8F-build--compilation-pipeline) |
+| 4 | [🌟 Feature Deep-Dive](#-feature-deep-dive) |
+| 5 | [🚀 Meteor 3.x Async Migration](#-meteor-3x-async-migration) |
+| 6 | [🔌 Core Implementation](#-core-implementation) |
+| 7 | [📂 Project Structure](#-project-structure) |
+| 8 | [🧰 Tech Stack](#-tech-stack) |
+| 9 | [🖥️ Quick Start](#%EF%B8%8F-quick-start) |
+| 10 | [🛡️ Engineering Quality](#%EF%B8%8F-engineering-quality) |
+
+---
+
+## 💡 Project Explanation & Motivation
+
+Traditional task managers and web applications rely on legacy **REST APIs** or standard **polling protocols**. This introduces significant overhead:
+*   🔴 **High Latency**: Every user action (completing a task, reordering list) requires a round-trip HTTP request/response before updating the UI.
+*   🔴 **Complex State Management**: Developers must write complex red-rendering logic or state handlers (Redux, Vuex) to keep the client cache in sync with the database.
+*   🔴 **Zero Collaborative Reactivity**: If a task is modified on Client A, Client B has no way of knowing unless they refresh the page or set up aggressive polling intervals.
+
+This application resolves these issues by using a **Real-Time Reactive Architecture** powered by **Meteor 3.x, Blaze, and MongoDB**:
+
+```
+Traditional Web App:  User Click ──▶ HTTP POST ──▶ DB Save ──▶ HTTP 200 ──▶ Manual State Update ──▶ Re-render UI
+Real-Time Reactivity: User Click ──▶ Local Minimongo (Optimistic UI) ──▶ Instantly Render UI ──▶ WebSocket Sync (DDP)
+```
+
+---
+
+### Core Behavioral Workflows
+
+#### 1. Zero-Latency Compensation (Optimistic UI)
+When a user clicks a checkbox or double-clicks to edit a task, the action runs on the client first using **Minimongo** (an in-memory client-side clone of the server database). The Blaze view updates **instantly** (within 10-20ms). In the background, a non-blocking WebSocket message publishes the change to the server. If the server approves, the change commits permanently; if not, the client rolls back seamlessly.
+
+#### 2. Fully-Persistent Drag-and-Drop Reordering
+Instead of standard list structures, the application maps visual positions using an integer `order` index:
+1.  **DOM Interception**: SortableJS tracks user drag actions and animates movement at 150ms.
+2.  **Order Calculation**: When dragging stops, the DOM order is parsed, collecting an array of task IDs (`orderedIds`).
+3.  **Concurrent Update**: An async server method is called via `Meteor.callAsync('tasks.reorder', orderedIds)`. The server processes these asynchronously using `Promise.all()` to batch-update the database indices, guaranteeing the correct visual order is preserved on page refresh or client sync.
+
+#### 3. Fiber-Free Meteor 3.x Runtime
+Previously, Meteor relied on Fibers (coroutines) to execute database queries synchronously. Since Node.js v16+ deprecated Fibers, this project migrates the entire data layer to a modern promise-based async loop. Every collection query uses modern `async/await` commands, preventing blocking on the main thread and optimizing the CPU cycle footprint of the Node runtime.
 
 ---
 
