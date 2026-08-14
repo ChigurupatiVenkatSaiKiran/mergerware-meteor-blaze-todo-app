@@ -143,8 +143,8 @@ A responsive dual-panel layout with dynamic sidebar filters, live category count
 ## 🏗️ System Architecture
 
 <div align="center">
-<img src="client/assets/architecture.jpg" alt="System Architecture — Client Browser ↔ DDP WebSocket ↔ Meteor 3.x Server ↔ MongoDB" width="920"/>
-<br/><sub><i>Fig. 3 — Full system architecture: Blaze client with Minimongo cache ↔ DDP bidirectional sync ↔ Meteor async server ↔ MongoDB</i></sub>
+<img src="client/assets/architecture.jpg" alt="Fig. 1. System Architecture of Mergerware Real-Time Task Management Application" width="620"/>
+<br/><sub><i>Fig. 1 — Three-tier system architecture: Presentation Layer (Blaze + Minimongo) ↔ Application Layer (Meteor 3.x Async Methods + DDP Publications) ↔ Data Layer (MongoDB)</i></sub>
 </div>
 
 <br/>
@@ -183,8 +183,8 @@ flowchart TD
 ## ⚙️ Build & Compilation Pipeline
 
 <div align="center">
-<img src="client/assets/pipeline.jpg" alt="Build Pipeline — Source Code → Rspack Compiler → Meteor 3.x Runtime → Live Application" width="920"/>
-<br/><sub><i>Fig. 4 — 4-stage compilation pipeline: Source → Rspack SWC → Meteor Runtime → Live DDP Client</i></sub>
+<img src="client/assets/pipeline.jpg" alt="Fig. 2. Build, Compilation, and Deployment Pipeline" width="920"/>
+<br/><sub><i>Fig. 2 — 5-stage build pipeline: Source Files → Rspack SWC Compiler → Meteor 3.x Server → Client Browser → Real-Time DDP Sync Loop</i></sub>
 </div>
 
 <br/>
