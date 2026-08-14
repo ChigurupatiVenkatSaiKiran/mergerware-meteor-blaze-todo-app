@@ -64,38 +64,15 @@ Modern glassmorphism with backdrop-filter blur, CSS custom properties & transiti
 
 | # | Section |
 |---|---------|
-| 1 | [🎨 Visual Showcase](#-visual-showcase) |
-| 2 | [🌟 Feature Deep-Dive](#-feature-deep-dive) |
-| 3 | [🏗️ System Architecture](#%EF%B8%8F-system-architecture) |
-| 4 | [⚙️ Build & Compilation Pipeline](#%EF%B8%8F-build--compilation-pipeline) |
-| 5 | [🚀 Meteor 3.x Async Migration](#-meteor-3x-async-migration) |
-| 6 | [🔌 Core Implementation](#-core-implementation) |
-| 7 | [📂 Project Structure](#-project-structure) |
-| 8 | [🧰 Tech Stack](#-tech-stack) |
-| 9 | [🖥️ Quick Start](#%EF%B8%8F-quick-start) |
-| 10 | [🛡️ Engineering Quality](#%EF%B8%8F-engineering-quality) |
-
----
-
-## 🎨 Visual Showcase
-
-### 🖥️ Main Dashboard (Empty State)
-A polished onboarding card with floating emojis and contextual copy guides users to create their first task.
-
-<div align="center">
-<img src="client/assets/empty-state.png" alt="Empty State — Glassmorphic dark UI with sidebar categories and empty state illustration" width="920"/>
-<br/><sub><i>Fig. 1 — Empty state with category sidebar, progress ring, and onboarding prompt</i></sub>
-</div>
-
-<br/>
-
-### 📋 Active Task Board (With Tasks)
-A responsive dual-panel layout with dynamic sidebar filters, live category counts, color-coded task rows, and drag handles.
-
-<div align="center">
-<img src="client/assets/tasks-list.png" alt="Active Tasks — 3 tasks across Work, Personal, and Urgent categories" width="920"/>
-<br/><sub><i>Fig. 2 — Active task board showing category badges, colored borders, and reactive sidebar counts</i></sub>
-</div>
+| 1 | [🏗️ System Architecture](#%EF%B8%8F-system-architecture) |
+| 2 | [⚙️ Build & Compilation Pipeline](#%EF%B8%8F-build--compilation-pipeline) |
+| 3 | [🌟 Feature Deep-Dive](#-feature-deep-dive) |
+| 4 | [🚀 Meteor 3.x Async Migration](#-meteor-3x-async-migration) |
+| 5 | [🔌 Core Implementation](#-core-implementation) |
+| 6 | [📂 Project Structure](#-project-structure) |
+| 7 | [🧰 Tech Stack](#-tech-stack) |
+| 8 | [🖥️ Quick Start](#%EF%B8%8F-quick-start) |
+| 9 | [🛡️ Engineering Quality](#%EF%B8%8F-engineering-quality) |
 
 ---
 
