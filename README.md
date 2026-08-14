@@ -1,125 +1,280 @@
-# <div align="center">⚡ Mergerware Meteor Blaze Todo App</div>
-
 <div align="center">
 
-**A Premium, State-of-the-Art Task Management System built with Meteor 3.x, Blaze & Rspack.**
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=6366F1&center=true&vCenter=true&width=700&lines=Mergerware+Meteor+Blaze+Todo+App;Real-Time+Reactive+Task+Management;Glassmorphic+Dark+UI+%7C+Drag+%26+Drop;Built+with+Meteor+3.x+%2B+Blaze+%2B+Rspack" alt="Typing SVG" />
 
-*This application goes far beyond a typical to-do application, presenting an ultra-modern glassmorphic interface, real-time reactive counts, fully-persistent drag-and-drop reordering, inline text editing, and complete mobile responsiveness.*
+<br/>
 
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Meteor-3.x-DE4F4F?style=for-the-badge&logo=meteor&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Blaze-Template_Engine-FF6F00?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Rspack-Bundler-3B82F6?style=for-the-badge&logo=webpack&logoColor=white"/>
+  <img src="https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
+  <img src="https://img.shields.io/badge/SortableJS-Drag_&_Drop-8B5CF6?style=for-the-badge"/>
+</p>
 
-[![Meteor Version](https://img.shields.io/badge/Meteor-3.x-red.svg?style=for-the-badge&logo=meteor&logoColor=white)](https://meteor.com)
-[![Blaze View Engine](https://img.shields.io/badge/Blaze-Active-orange.svg?style=for-the-badge)](https://blazejs.org)
-[![Compiler](https://img.shields.io/badge/Bundler-Rspack-blue.svg?style=for-the-badge&logo=webpack)](https://rspack.dev)
-[![Database](https://img.shields.io/badge/Database-MongoDB-green.svg?style=for-the-badge&logo=mongodb)](https://mongodb.com)
-[![Code Quality](https://img.shields.io/badge/Code%20Style-Premium-purple.svg?style=for-the-badge)](https://github.com)
+<p align="center">
+  <img src="https://img.shields.io/badge/API-Fully_Async-00D4FF?style=flat-square"/>
+  <img src="https://img.shields.io/badge/HMR-%3C200ms-success?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Categories-4_Color_Coded-orange?style=flat-square"/>
+  <img src="https://img.shields.io/badge/DDP-Real_Time_Sync-blueviolet?style=flat-square"/>
+</p>
+
+<br/>
+
+> **A production-grade, full-featured task management application** built with **Meteor 3.x + Blaze + Rspack**, featuring a premium glassmorphic dark UI, 4 color-coded task categories, persistent drag-and-drop reordering, inline text editing, and real-time reactive updates across all connected clients via DDP WebSockets.
+
+| 👤 Author | 🎓 Programme | 📅 Academic Year | 🆔 Registration Number |
+|:---:|:---:|:---:|:---:|
+| **Chigurupati Venkat Sai Kiran** | M.Tech CSE (AI & ML) | 2025–27 | **25MAI1006** |
 
 </div>
 
 ---
 
-## 🎨 Visual Showcases
+## ⚡ Key Highlights
 
-### 💻 1. Main Dashboard (Empty State)
-A polished onboarding card with floating emojis and clean copy that prompts users to create their first tasks.
-![Empty State](client/assets/empty-state.png)
-
-### 📋 2. Active Todo Board (Glassmorphic Interface)
-A dual-panel layout containing a dynamic left sidebar for completion statistics, active filters, and real-time task counts, alongside a main task board showing category-coded items.
-![Tasks List](client/assets/tasks-list.png)
-
----
-
-## 📖 Table of Contents
-1. [🌟 Key Features & UX Enhancements](#-key-features--ux-enhancements)
-2. [🏗️ Technical Architecture & Specs](#%EF%B8%8F-technical-architecture--specs)
-3. [🚀 Meteor 3.x Migration Guide (Sync-to-Async)](#-meteor-3x-migration-guide-sync-to-async)
-4. [📂 Code Directory Map](#-code-directory-map)
-5. [🔌 Core Implementation Snippets](#-core-implementation-snippets)
-6. [🖥️ Quick Start & Setup](#%EF%B8%8F-quick-start--setup)
-7. [🛠️ Verification & Quality Assurance](#%EF%B8%8F-verification--quality-assurance)
-
----
-
-## 🌟 Key Features & UX Enhancements
-
-### 💼 Reactive Task Categories
-*   **4 Default Categories**: Work 💼, Personal 🏠, Urgent 🔥, and Other 📌.
-*   **Color Systems**: Built on HSL color systems. Every category is assigned unique color tokens (Indigo, Emerald, Crimson, Amber) used for item borders, glow shadows, and tag badges.
-*   **Sidebar Filter Badges**: Sidebar filter links dynamically calculate and render item tallies reactively based on active filters.
-
-### 🫳 Persisted Drag-and-Drop Reordering
-*   **SortableJS Core**: Integration of lightweight SortableJS (v1.15.7) for drag animation performance.
-*   **Drag Handle Constraints**: An explicit handle icon (`drag-handle`) ensures drag gestures do not interfere with checkboxes or text fields.
-*   **Database Sync**: Automatically updates the `order` fields in MongoDB using non-blocking promises on event completion.
-
-### 📝 In-Place Inline Text Editing
-*   **Trigger**: Double-clicking a task's title instantly swaps the static text with an editing input.
-*   **Keys**: Event listeners catch `Enter` to commit, and `Escape` to discard changes without server roundtrips.
-
-### 📊 Interactive Progress Tracking
-*   **SVG Gauge**: An animated circular SVG progress widget in the sidebar footer showing your real-time task completion percentage.
-
----
-## 🏗️ Technical Architecture & Pipeline
-
-### 🌐 System Architecture
-The application runs on a reactive distributed state model. Client UI interactions trigger optimistic UI updates in the local `Minimongo` database, while non-blocking asynchronous WebSocket DDP messages sync the state to the server and the primary MongoDB instance.
-
-![System Architecture](client/assets/architecture.svg)
-
-### ⚙️ Compilation & Asset Pipeline
-With Rspack as the core compiler, code modifications (CSS, templates, and server methods) undergo HMR (Hot Module Replacement) and compilation in less than 200ms.
-
-![Execution Pipeline](client/assets/pipeline.svg)
-
-
-## 🚀 Meteor 3.x Migration Guide (Sync-to-Async)
-
-This project is developed from the ground up to be compliant with **Meteor 3.x**. In Meteor 3, synchronous MongoDB operations are deprecated on the server. Below is a summary of how this project implements these upgrades:
-
-| Feature / Operation | Legacy Meteor 2.x (Sync) | Modern Meteor 3.x (Async) |
-| :--- | :--- | :--- |
-| **Server Fetch** | `Tasks.findOne(query)` | `await Tasks.findOneAsync(query)` |
-| **Server Insert** | `Tasks.insert(doc)` | `await Tasks.insertAsync(doc)` |
-| **Server Update** | `Tasks.update(id, modifier)` | `await Tasks.updateAsync(id, modifier)` |
-| **Server Delete** | `Tasks.remove(id)` | `await Tasks.removeAsync(id)` |
-| **Client Method Calls** | `Meteor.call(name, args, cb)` | `Meteor.callAsync(name, args)` |
+<table>
+<tr>
+<td align="center" width="200">
+<img src="https://img.shields.io/badge/📋-Task_Categories-6366F1?style=for-the-badge"/>
+<br/><b>4 Color-Coded Categories</b><br/>
+Work 💼 · Personal 🏠 · Urgent 🔥 · Other 📌 with distinct HSL accent colors
+</td>
+<td align="center" width="200">
+<img src="https://img.shields.io/badge/🫳-Drag_&_Drop-A855F7?style=for-the-badge"/>
+<br/><b>Persistent Reordering</b><br/>
+SortableJS drag handles with 150ms animation · order saved to MongoDB
+</td>
+<td align="center" width="200">
+<img src="https://img.shields.io/badge/⚡-Real_Time-10B981?style=for-the-badge"/>
+<br/><b>DDP Live Sync</b><br/>
+All connected clients update instantly via Meteor's DDP WebSocket protocol
+</td>
+<td align="center" width="200">
+<img src="https://img.shields.io/badge/🎨-Glassmorphic-FF6F00?style=for-the-badge"/>
+<br/><b>Premium Dark UI</b><br/>
+Modern glassmorphism with backdrop-filter blur, CSS custom properties & transitions
+</td>
+</tr>
+</table>
 
 ---
 
-## 📂 Code Directory Map
+## 📌 Table of Contents
 
+| # | Section |
+|---|---------|
+| 1 | [🎨 Visual Showcase](#-visual-showcase) |
+| 2 | [🌟 Feature Deep-Dive](#-feature-deep-dive) |
+| 3 | [🏗️ System Architecture](#%EF%B8%8F-system-architecture) |
+| 4 | [⚙️ Build & Compilation Pipeline](#%EF%B8%8F-build--compilation-pipeline) |
+| 5 | [🚀 Meteor 3.x Async Migration](#-meteor-3x-async-migration) |
+| 6 | [🔌 Core Implementation](#-core-implementation) |
+| 7 | [📂 Project Structure](#-project-structure) |
+| 8 | [🧰 Tech Stack](#-tech-stack) |
+| 9 | [🖥️ Quick Start](#%EF%B8%8F-quick-start) |
+| 10 | [🛡️ Engineering Quality](#%EF%B8%8F-engineering-quality) |
+
+---
+
+## 🎨 Visual Showcase
+
+### 🖥️ Main Dashboard (Empty State)
+A polished onboarding card with floating emojis and contextual copy guides users to create their first task.
+
+<div align="center">
+<img src="client/assets/empty-state.png" alt="Empty State — Glassmorphic dark UI with sidebar categories and empty state illustration" width="920"/>
+<br/><sub><i>Fig. 1 — Empty state with category sidebar, progress ring, and onboarding prompt</i></sub>
+</div>
+
+<br/>
+
+### 📋 Active Task Board (With Tasks)
+A responsive dual-panel layout with dynamic sidebar filters, live category counts, color-coded task rows, and drag handles.
+
+<div align="center">
+<img src="client/assets/tasks-list.png" alt="Active Tasks — 3 tasks across Work, Personal, and Urgent categories" width="920"/>
+<br/><sub><i>Fig. 2 — Active task board showing category badges, colored borders, and reactive sidebar counts</i></sub>
+</div>
+
+---
+
+## 🌟 Feature Deep-Dive
+
+### 💼 1. Reactive Task Categories
+
+| Feature | Implementation |
+|:---|:---|
+| **4 Categories** | Work 💼 · Personal 🏠 · Urgent 🔥 · Other 📌 |
+| **Color System** | HSL-based design tokens (Indigo · Emerald · Crimson · Amber) |
+| **Visual Indicators** | Left border accent stripes + pill badges on each task row |
+| **Sidebar Filter** | Click any category → reactive filter with live task counts |
+| **Validation** | Server-side category validation with fallback to "Other" |
+
+### 🫳 2. Persisted Drag-and-Drop Reordering
+
+| Feature | Implementation |
+|:---|:---|
+| **Library** | SortableJS v1.15.7 (lightweight, zero dependencies) |
+| **Drag Handle** | Dedicated `.drag-handle` icon (⋮⋮) — prevents accidental drags |
+| **Animation** | 150ms smooth repositioning with ghost/drag class styling |
+| **Persistence** | `tasks.reorder` method updates `order` field for every task in MongoDB |
+| **Reactivity** | SortableJS re-initialized on every Tracker autorun cycle |
+
+### 📝 3. Inline Text Editing
+
+| Feature | Implementation |
+|:---|:---|
+| **Trigger** | Double-click any task label → transforms to live `<input>` |
+| **Save** | Press `Enter` → calls `tasks.updateText` async method |
+| **Cancel** | Press `Escape` → reverts to original text, no server call |
+| **Validation** | Empty text rejected with `Meteor.Error` on server |
+
+### 📊 4. Interactive Progress Tracking
+
+| Feature | Implementation |
+|:---|:---|
+| **Widget** | Animated SVG circular progress ring in sidebar footer |
+| **Calculation** | `(completed / total) × 100` — updates reactively |
+| **Display** | Shows percentage + "X of Y done" text |
+
+---
+
+## 🏗️ System Architecture
+
+<div align="center">
+<img src="client/assets/architecture.jpg" alt="System Architecture — Client Browser ↔ DDP WebSocket ↔ Meteor 3.x Server ↔ MongoDB" width="920"/>
+<br/><sub><i>Fig. 3 — Full system architecture: Blaze client with Minimongo cache ↔ DDP bidirectional sync ↔ Meteor async server ↔ MongoDB</i></sub>
+</div>
+
+<br/>
+
+### Interactive Architecture Flowchart
+
+```mermaid
+flowchart TD
+    A["🖥️ Client Browser"] --> B["📄 Blaze Templates\nApp.html · Task.html"]
+    B --> C["🔄 Tracker Autorun\nReactive computation engine"]
+    C --> D["💾 Minimongo\nClient-side cache"]
+
+    D <-->|"DDP WebSocket\nReal-time sync"| E["🌐 Meteor 3.x Server"]
+
+    E --> F["📡 Publications\nSorted cursor broadcast"]
+    E --> G["⚡ Async Methods\ntasks.insert · tasks.reorder\ntasks.setChecked · tasks.remove\ntasks.updateText"]
+
+    G --> H["🗄️ MongoDB\nCollection: tasks"]
+    F --> H
+
+    I["🫳 SortableJS\nDrag & Drop Controller"] --> |"Meteor.callAsync\n('tasks.reorder', ids)"| E
+
+    style A fill:#312e81,stroke:#6366f1,color:#ffffff
+    style B fill:#312e81,stroke:#6366f1,color:#ffffff
+    style C fill:#312e81,stroke:#6366f1,color:#ffffff
+    style D fill:#312e81,stroke:#6366f1,color:#ffffff
+    style E fill:#581c87,stroke:#9333ea,color:#ffffff
+    style F fill:#581c87,stroke:#9333ea,color:#ffffff
+    style G fill:#581c87,stroke:#9333ea,color:#ffffff
+    style H fill:#064e3b,stroke:#10b981,color:#ffffff
+    style I fill:#1e1b4b,stroke:#a855f7,color:#ffffff
 ```
-mergerware-meteor-blaze-todo-app/
-├── client/
-│   ├── main.js             # Client entry point; mounts templates
-│   ├── main.html           # Document wrapper loading web fonts
-│   ├── main.css            # Dark mode glassmorphic variables & components
-│   ├── App.html            # Main UI layout template
-│   ├── App.js              # Template state helpers, filters, SortableJS setup
-│   ├── Task.html           # Individual task line template
-│   ├── Task.js             # Inline edit inputs, toggle/delete click methods
-│   └── assets/             # Screenshots and visual design assets
-│
-├── imports/
-│   └── api/tasks/
-│       ├── tasks.js        # Tasks collection definition & Categories schemas
-│       └── methods.js      # Meteor 3.x async server CRUD operations
-│
-└── server/
-    └── main.js             # Startup task publications
+
+---
+
+## ⚙️ Build & Compilation Pipeline
+
+<div align="center">
+<img src="client/assets/pipeline.jpg" alt="Build Pipeline — Source Code → Rspack Compiler → Meteor 3.x Runtime → Live Application" width="920"/>
+<br/><sub><i>Fig. 4 — 4-stage compilation pipeline: Source → Rspack SWC → Meteor Runtime → Live DDP Client</i></sub>
+</div>
+
+<br/>
+
+### Pipeline Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant S as 📝 Source Files
+    participant R as ⚙️ Rspack Compiler
+    participant M as 🚀 Meteor 3.x Server
+    participant C as 🖥️ Client Browser
+    participant DB as 🗄️ MongoDB
+
+    S->>R: Blaze HTML + JS + CSS files
+    R->>R: SWC transpilation + template injection
+    R->>M: Compiled bundle (< 200ms HMR)
+    M->>DB: Connect & initialize collections
+    M->>M: Register async methods + publications
+    M->>C: Serve compiled client bundle
+    C->>M: DDP.connect() over WebSocket
+    M->>C: Publish 'tasks' (sorted cursor)
+    C->>C: Minimongo cache hydrated
+    C->>C: Blaze reactive render
+    Note over C,DB: User adds a task
+    C->>M: callAsync('tasks.insert', text, category)
+    M->>DB: Tasks.insertAsync(doc)
+    DB-->>M: Acknowledged
+    M-->>C: Publication pushes new document
+    C->>C: Tracker invalidates → UI re-renders
 ```
 
 ---
 
-## 🔌 Core Implementation Snippets
+## 🚀 Meteor 3.x Async Migration
 
-### 1. Reactive Drag-and-Drop Synchronization
-SortableJS is initialized reactively when the list template renders. The new order is instantly committed using `callAsync`:
+This project is built from the ground up for **Meteor 3.x** compliance. In Meteor 3, all synchronous MongoDB operations are **deprecated** on the server. Below is a complete mapping of the migration:
+
+<div align="center">
+
+| Operation | Legacy Meteor 2.x (Sync) | Modern Meteor 3.x (Async) | File |
+|:---|:---|:---|:---:|
+| **Find One** | `Tasks.findOne(query)` | `await Tasks.findOneAsync(query)` | `methods.js` |
+| **Insert** | `Tasks.insert(doc)` | `await Tasks.insertAsync(doc)` | `methods.js` |
+| **Update** | `Tasks.update(id, mod)` | `await Tasks.updateAsync(id, mod)` | `methods.js` |
+| **Remove** | `Tasks.remove(id)` | `await Tasks.removeAsync(id)` | `methods.js` |
+| **Client Calls** | `Meteor.call(name, args, cb)` | `Meteor.callAsync(name, args)` | `App.js` `Task.js` |
+
+</div>
+
+<details>
+<summary><b>🐛 Critical implementation detail — DDP stub errors</b></summary>
+
+Using the legacy `Meteor.call()` for an async server method creates a client-side optimistic UI stub that throws `403 Access Denied` because the stub attempts to run the sync version of the method (which doesn't exist in Meteor 3.x). The fix: **always use `Meteor.callAsync()`** on the client, which properly awaits the server response without creating problematic stubs.
+
+</details>
+
+---
+
+## 🔌 Core Implementation
+
+### 1. Async Server Methods (`methods.js`)
+
+All 6 Meteor Methods use `async/await` with input validation via `check()`:
 
 ```javascript
-// client/App.js (onRendered)
+Meteor.methods({
+  async 'tasks.insert'(text, category) {
+    check(text, String);
+    check(category, String);
+
+    const maxOrderTask = await Tasks.findOneAsync({}, { sort: { order: -1 } });
+    const nextOrder = maxOrderTask ? maxOrderTask.order + 1 : 0;
+
+    return Tasks.insertAsync({
+      text: text.trim(),
+      checked: false,
+      category: safeCategory,
+      order: nextOrder,
+      createdAt: new Date(),
+    });
+  },
+});
+```
+
+### 2. Drag-and-Drop Sync (`App.js`)
+
+SortableJS is initialized reactively inside `Template.App.onRendered`:
+
+```javascript
 sortableInstance = Sortable.create(listEl, {
   handle: '.drag-handle',
   animation: 150,
@@ -128,75 +283,140 @@ sortableInstance = Sortable.create(listEl, {
   onEnd(evt) {
     const items = listEl.querySelectorAll('.task-item[data-id]');
     const orderedIds = Array.from(items).map(el => el.dataset.id);
-    
-    // Non-blocking server update
     Meteor.callAsync('tasks.reorder', orderedIds)
-      .catch((err) => console.error('reorder error:', err));
+      .catch(err => console.error('Reorder failed:', err));
   },
 });
 ```
 
-### 2. Async Server-Side Methods
-Database integrity is preserved using Meteor's validation checks, while maintaining non-blocking performance:
+### 3. Reactive Publications (`server/main.js`)
 
 ```javascript
-// imports/api/tasks/methods.js
-Meteor.methods({
-  async 'tasks.insert'(text, category) {
-    check(text, String);
-    check(category, String);
-
-    if (!text.trim()) {
-      throw new Meteor.Error('invalid-text', 'Task text cannot be empty.');
-    }
-
-    const maxOrderTask = await Tasks.findOneAsync({}, { sort: { order: -1 } });
-    const nextOrder = maxOrderTask ? maxOrderTask.order + 1 : 0;
-
-    return Tasks.insertAsync({
-      text: text.trim(),
-      checked: false,
-      category,
-      order: nextOrder,
-      createdAt: new Date(),
-    });
-  }
+Meteor.publish('tasks', function () {
+  return Tasks.find({}, { sort: { order: 1 } });
 });
 ```
 
 ---
 
-## 🖥️ Quick Start & Setup
+## 📂 Project Structure
 
-### Prerequisites
-1. Ensure Node.js is installed.
-2. Install Meteor globally:
-   ```bash
-   npm install -g meteor
-   ```
-
-### Setup Steps
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/ChigurupatiVenkatSaiKiran/mergerware-meteor-blaze-todo-app.git
-   cd mergerware-meteor-blaze-todo-app
-   ```
-2. Install npm dependencies:
-   ```bash
-   npm install
-   ```
-3. Run the development server:
-   ```bash
-   npm start
-   ```
-4. Access the web app in your browser:
-   * **App URL**: `http://localhost:3000`
-   * **Rspack HMR Dev Server**: `http://localhost:8080`
+```
+mergerware-meteor-blaze-todo-app/
+│
+├── 📂 client/
+│   ├── main.js              # Client entry point — imports all modules
+│   ├── main.html            # Document head, fonts, root template mount
+│   ├── main.css             # 800-line premium glassmorphic design system
+│   ├── App.html             # Sidebar + task board layout template
+│   ├── App.js               # Category filters, add form, SortableJS bindings
+│   ├── Task.html            # Individual task row template
+│   ├── Task.js              # Checkbox, delete, inline edit event handlers
+│   └── 📂 assets/           # Screenshots & architecture diagrams
+│
+├── 📂 imports/
+│   └── 📂 api/tasks/
+│       ├── tasks.js          # MongoDB Collection + CATEGORIES config
+│       └── methods.js        # 6 async Meteor Methods (CRUD + reorder)
+│
+├── 📂 server/
+│   └── main.js               # Publications + server startup
+│
+├── 📄 package.json            # Dependencies (sortablejs, @meteorjs/rspack)
+├── 📄 rspack.config.js        # Rspack bundler configuration
+├── 📄 .gitignore              # Ignores node_modules, .meteor/local, logs
+└── 📄 README.md               # This file
+```
 
 ---
 
-## 🛠️ Verification & Quality Assurance
+## 🧰 Tech Stack
 
-*   **Console Cleanliness**: Zero synchronous DDP warnings or unresolved Promises on client load.
-*   **Security Controls**: Sanitizes variables on insertion and prevents direct client-side collection manipulation by using server-defined methods.
-*   **Responsive Framework**: Responsive margins, transitions, and layout grids built entirely on vanilla CSS.
+<div align="center">
+
+| Layer | Technology | Purpose |
+|:---|:---|:---|
+| **Framework** | Meteor 3.x | Full-stack reactive platform with DDP protocol |
+| **View Engine** | Blaze (Spacebars) | Declarative reactive templates with Tracker integration |
+| **Bundler** | Rspack + SWC | Sub-200ms hot module replacement compilation |
+| **Database** | MongoDB | Document store with oplog tailing for reactivity |
+| **Drag & Drop** | SortableJS v1.15.7 | Lightweight reorder library with animation support |
+| **Styling** | Vanilla CSS (HSL tokens) | Glassmorphic dark theme with CSS custom properties |
+| **Fonts** | Google Inter | Modern sans-serif for UI clarity |
+| **Validation** | `meteor/check` | Runtime type checking for all method parameters |
+
+</div>
+
+---
+
+## 🖥️ Quick Start
+
+### Prerequisites
+
+```bash
+# Verify Node.js and Meteor are installed
+node --version    # v20+
+meteor --version  # 3.x
+```
+
+### Step 1: Clone & Install
+
+```bash
+git clone https://github.com/ChigurupatiVenkatSaiKiran/mergerware-meteor-blaze-todo-app.git
+cd mergerware-meteor-blaze-todo-app
+npm install
+```
+
+### Step 2: Run the Application
+
+```bash
+npm start
+```
+
+The server will boot up and compile:
+- **Application URL**: `http://localhost:3000`
+- **Rspack HMR Server**: `http://localhost:8080`
+
+> ⏱️ First build takes ~30 seconds. Subsequent HMR updates compile in **< 200ms**.
+
+---
+
+## 🛡️ Engineering Quality
+
+<details open>
+<summary><b>Click to expand all quality measures</b></summary>
+
+| # | Feature | Details |
+|:---:|:---|:---|
+| 1 | **Meteor 3.x Full Compliance** | Zero sync MongoDB calls on server — all methods use `async/await` |
+| 2 | **Input Validation** | Every method parameter validated with `check()` before processing |
+| 3 | **Category Sanitization** | Invalid categories silently fall back to "Other" instead of throwing |
+| 4 | **Optimistic UI** | Client-side method stubs provide instant feedback before server confirmation |
+| 5 | **Responsive Layout** | Sidebar collapses to horizontal pill-bar on mobile viewports |
+| 6 | **Zero Console Errors** | Clean DDP connection — no unhandled promises or deprecation warnings |
+| 7 | **Accessibility** | Semantic HTML, keyboard-navigable inline editing (Enter/Escape) |
+
+</details>
+
+---
+
+<div align="center">
+
+**Built with ❤️ by [Chigurupati Venkat Sai Kiran](https://github.com/ChigurupatiVenkatSaiKiran)**
+
+*M.Tech CSE (Specialization in AI & ML) · Registration No. 25MAI1006 · 2025–27*
+
+<br/>
+
+> *"The best interface is one that gets out of your way and lets you focus on what matters."*
+
+<br/>
+
+⭐ **Star this repo if you found it useful!**
+
+<br/>
+
+<img src="https://img.shields.io/github/stars/ChigurupatiVenkatSaiKiran/mergerware-meteor-blaze-todo-app?style=social"/>
+<img src="https://img.shields.io/github/forks/ChigurupatiVenkatSaiKiran/mergerware-meteor-blaze-todo-app?style=social"/>
+
+</div>
