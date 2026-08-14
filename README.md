@@ -124,37 +124,6 @@ Modern glassmorphism with backdrop-filter blur, CSS custom properties & transiti
 <br/><sub><i>Fig. 1 — Three-tier system architecture: Presentation Layer (Blaze + Minimongo) ↔ Application Layer (Meteor 3.x Async Methods + DDP Publications) ↔ Data Layer (MongoDB)</i></sub>
 </div>
 
-<br/>
-
-### Interactive Architecture Flowchart
-
-```mermaid
-flowchart TD
-    A["🖥️ Client Browser"] --> B["📄 Blaze Templates\nApp.html · Task.html"]
-    B --> C["🔄 Tracker Autorun\nReactive computation engine"]
-    C --> D["💾 Minimongo\nClient-side cache"]
-
-    D <-->|"DDP WebSocket\nReal-time sync"| E["🌐 Meteor 3.x Server"]
-
-    E --> F["📡 Publications\nSorted cursor broadcast"]
-    E --> G["⚡ Async Methods\ntasks.insert · tasks.reorder\ntasks.setChecked · tasks.remove\ntasks.updateText"]
-
-    G --> H["🗄️ MongoDB\nCollection: tasks"]
-    F --> H
-
-    I["🫳 SortableJS\nDrag & Drop Controller"] --> |"Meteor.callAsync\n('tasks.reorder', ids)"| E
-
-    style A fill:#312e81,stroke:#6366f1,color:#ffffff
-    style B fill:#312e81,stroke:#6366f1,color:#ffffff
-    style C fill:#312e81,stroke:#6366f1,color:#ffffff
-    style D fill:#312e81,stroke:#6366f1,color:#ffffff
-    style E fill:#581c87,stroke:#9333ea,color:#ffffff
-    style F fill:#581c87,stroke:#9333ea,color:#ffffff
-    style G fill:#581c87,stroke:#9333ea,color:#ffffff
-    style H fill:#064e3b,stroke:#10b981,color:#ffffff
-    style I fill:#1e1b4b,stroke:#a855f7,color:#ffffff
-```
-
 ---
 
 ## ⚙️ Build & Compilation Pipeline
@@ -163,36 +132,6 @@ flowchart TD
 <img src="client/assets/pipeline.jpg" alt="Fig. 2. Build, Compilation, and Deployment Pipeline" width="920"/>
 <br/><sub><i>Fig. 2 — 5-stage build pipeline: Source Files → Rspack SWC Compiler → Meteor 3.x Server → Client Browser → Real-Time DDP Sync Loop</i></sub>
 </div>
-
-<br/>
-
-### Pipeline Sequence Diagram
-
-```mermaid
-sequenceDiagram
-    participant S as 📝 Source Files
-    participant R as ⚙️ Rspack Compiler
-    participant M as 🚀 Meteor 3.x Server
-    participant C as 🖥️ Client Browser
-    participant DB as 🗄️ MongoDB
-
-    S->>R: Blaze HTML + JS + CSS files
-    R->>R: SWC transpilation + template injection
-    R->>M: Compiled bundle (< 200ms HMR)
-    M->>DB: Connect & initialize collections
-    M->>M: Register async methods + publications
-    M->>C: Serve compiled client bundle
-    C->>M: DDP.connect() over WebSocket
-    M->>C: Publish 'tasks' (sorted cursor)
-    C->>C: Minimongo cache hydrated
-    C->>C: Blaze reactive render
-    Note over C,DB: User adds a task
-    C->>M: callAsync('tasks.insert', text, category)
-    M->>DB: Tasks.insertAsync(doc)
-    DB-->>M: Acknowledged
-    M-->>C: Publication pushes new document
-    C->>C: Tracker invalidates → UI re-renders
-```
 
 ---
 
