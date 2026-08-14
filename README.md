@@ -10,6 +10,7 @@
   <img src="https://img.shields.io/badge/Rspack-Bundler-3B82F6?style=for-the-badge&logo=webpack&logoColor=white"/>
   <img src="https://img.shields.io/badge/MongoDB-Database-47A248?style=for-the-badge&logo=mongodb&logoColor=white"/>
   <img src="https://img.shields.io/badge/SortableJS-Drag_&_Drop-8B5CF6?style=for-the-badge"/>
+  <a href="https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/"><img src="https://img.shields.io/badge/GitHub_Pages-Live_⚡-22C55E?style=for-the-badge&logo=github&logoColor=white"/></a>
 </p>
 
 <p align="center">
@@ -17,18 +18,27 @@
   <img src="https://img.shields.io/badge/HMR-%3C200ms-success?style=flat-square"/>
   <img src="https://img.shields.io/badge/Categories-4_Color_Coded-orange?style=flat-square"/>
   <img src="https://img.shields.io/badge/DDP-Real_Time_Sync-blueviolet?style=flat-square"/>
-  <a href="https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/"><img src="https://img.shields.io/badge/Live_Demo-GitHub_Pages_⚡-22C55E?style=flat-square&logo=github&logoColor=white"/></a>
+  <img src="https://img.shields.io/badge/Status-Production_Ready-success?style=flat-square"/>
 </p>
 
 <br/>
 
 > **A production-grade, full-featured task management application** built with **Meteor 3.x + Blaze + Rspack**, featuring a premium glassmorphic dark UI, 4 color-coded task categories, persistent drag-and-drop reordering, inline text editing, and real-time reactive updates across all connected clients via DDP WebSockets.
 
+<br/>
+
 <div align="center">
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo_URL-Open_Application-6366F1?style=for-the-badge&logo=rocket)](https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/)
+### 🌐 Live Production Demo (Free Forever, 24/7 Online)
+👉 **[https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/](https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/)**
 
-</div>
+<br/>
+
+<a href="https://chigurupativenkatsaikiran.github.io/mergerware-meteor-blaze-todo-app/">
+  <img src="https://img.shields.io/badge/🚀_LAUNCH_LIVE_APPLICATION-Open_in_Browser-6366F1?style=for-the-badge&logo=googlechrome&logoColor=white" height="40"/>
+</a>
+
+<br/><br/>
 
 | 👤 Author | 🎓 Programme | 📅 Academic Year | 🆔 Registration Number |
 |:---:|:---:|:---:|:---:|
