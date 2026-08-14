@@ -157,6 +157,37 @@ Previously, Meteor relied on Fibers (coroutines) to execute database queries syn
 <br/><sub><i>Fig. 1 — Three-tier system architecture: Presentation Layer (Blaze + Minimongo) ↔ Application Layer (Meteor 3.x Async Methods + DDP Publications) ↔ Data Layer (MongoDB)</i></sub>
 </div>
 
+<br/>
+
+### Interactive Architecture Flowchart
+
+```mermaid
+flowchart TD
+    A["🖥️ Client Browser"] --> B["📄 Blaze Templates\nApp.html · Task.html"]
+    B --> C["🔄 Tracker Autorun\nReactive computation engine"]
+    C --> D["💾 Minimongo\nClient-side cache"]
+
+    D <-->|"DDP WebSocket\nReal-time sync"| E["🌐 Meteor 3.x Server"]
+
+    E --> F["📡 Publications\nSorted cursor broadcast"]
+    E --> G["⚡ Async Methods\ntasks.insert · tasks.reorder\ntasks.setChecked · tasks.remove\ntasks.updateText"]
+
+    G --> H["🗄️ MongoDB\nCollection: tasks"]
+    F --> H
+
+    I["🫳 SortableJS\nDrag & Drop Controller"] --> |"Meteor.callAsync\n('tasks.reorder', ids)"| E
+
+    style A fill:#312e81,stroke:#6366f1,color:#ffffff
+    style B fill:#312e81,stroke:#6366f1,color:#ffffff
+    style C fill:#312e81,stroke:#6366f1,color:#ffffff
+    style D fill:#312e81,stroke:#6366f1,color:#ffffff
+    style E fill:#581c87,stroke:#9333ea,color:#ffffff
+    style F fill:#581c87,stroke:#9333ea,color:#ffffff
+    style G fill:#581c87,stroke:#9333ea,color:#ffffff
+    style H fill:#064e3b,stroke:#10b981,color:#ffffff
+    style I fill:#1e1b4b,stroke:#a855f7,color:#ffffff
+```
+
 ---
 
 ## ⚙️ Build & Compilation Pipeline
