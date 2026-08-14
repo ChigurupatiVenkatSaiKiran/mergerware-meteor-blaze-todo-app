@@ -17,11 +17,18 @@
   <img src="https://img.shields.io/badge/HMR-%3C200ms-success?style=flat-square"/>
   <img src="https://img.shields.io/badge/Categories-4_Color_Coded-orange?style=flat-square"/>
   <img src="https://img.shields.io/badge/DDP-Real_Time_Sync-blueviolet?style=flat-square"/>
+  <a href="https://6039541c38405d.lhr.life"><img src="https://img.shields.io/badge/Live_Demo-Online_⚡-22C55E?style=flat-square&logo=googlechrome&logoColor=white"/></a>
 </p>
 
 <br/>
 
 > **A production-grade, full-featured task management application** built with **Meteor 3.x + Blaze + Rspack**, featuring a premium glassmorphic dark UI, 4 color-coded task categories, persistent drag-and-drop reordering, inline text editing, and real-time reactive updates across all connected clients via DDP WebSockets.
+
+<div align="center">
+
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo_URL-Open_Application-6366F1?style=for-the-badge&logo=rocket)](https://6039541c38405d.lhr.life)
+
+</div>
 
 | 👤 Author | 🎓 Programme | 📅 Academic Year | 🆔 Registration Number |
 |:---:|:---:|:---:|:---:|
